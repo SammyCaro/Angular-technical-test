@@ -18,10 +18,16 @@
 
       <div class="optionsButtons">
         <p class="selectOption">Seleccione una opción</p>
-        <div class="buttonContainer">
-          <button class="withdrawAll">Quiero retirar todo</button>
-          <button class="withdrawAmount">Quiero ingresar el monto</button>
+        <div class="buttonContainer" *ngIf="show === false; else showInputText">
+          <button class="withdrawAll" (click)="withdrawAll()">Quiero retirar todo</button>
+          <button class="withdrawAmount" (click)="showCustomAmountInput()">Quiero ingresar el monto</button>
         </div>
+
+        <ng-template #showInputText>
+          <input type="number" [(ngModel)]="customAmount" (keyup)="onKey($event)">
+          <button (click)="backToButtons()">
+            <- </button>
+        </ng-template>
       </div>
     </div>
   </section>
@@ -42,7 +48,7 @@
       <div class="optionsButtons">
         <p class="selectOption">Seleccione una opción</p>
         <div class="buttonContainer">
-          <button class="withdrawAll">Quiero retirar todo</button>
+          <button class="withdrawAll" (click)="withdrawAll()">Quiero retirar todo</button>
           <button class="withdrawAmount">Quiero ingresar el monto</button>
         </div>
       </div>

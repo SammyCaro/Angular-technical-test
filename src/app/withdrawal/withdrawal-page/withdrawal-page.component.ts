@@ -12,9 +12,13 @@ export class WithdrawalPageComponent implements OnInit {
   withdrawInfo: Withdraw[] = [];
   withdrawAmount!: number[];
   userAmount: number = 0;
+  customAmount: number = 0;
 
   /* second goal */
   secondGoalAmount: number = 2000512;
+
+  /* toggle buttons */
+  show: boolean = false;
 
   constructor(private withdrawService: WithdrawalService) {}
 
@@ -26,5 +30,34 @@ export class WithdrawalPageComponent implements OnInit {
         return item.saldoDisponible;
       });
     });
+  }
+
+  withdrawAll() {
+    this.userAmount = this.withdrawAmount[0];
+    console.log('monto total', this.userAmount);
+  }
+
+  showCustomAmountInput() {
+    this.show = true;
+    console.log(this.show);
+  }
+
+  onKey(event: any) {
+    this.userAmount = this.customAmount;
+    if (this.userAmount > this.withdrawAmount[0]) {
+      this.userAmount = this.withdrawAmount[0];
+    } else if (this.userAmount < 0) {
+      this.userAmount = 0;
+    }
+
+    if (event.target.value === '') {
+      this.userAmount = 0;
+    }
+
+    console.log('monto personalizado', this.userAmount);
+  }
+
+  backToButtons() {
+    this.show = false;
   }
 }
