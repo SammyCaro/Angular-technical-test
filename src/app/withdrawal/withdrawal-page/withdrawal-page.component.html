@@ -1,17 +1,17 @@
-<main>
+<main *ngFor="let withdraw of withdrawInfo | slice:1:2">
   <h1>Hacer un retiro</h1>
   <hr class="titleHr">
 
   <section class="container">
     <span class="rectangle"></span>
-    <h2 class="subtitle"> Moderado Conservador - Serie B</h2>
+    <h2 class="subtitle"> {{ withdraw.metaNombre }} - {{ withdraw.serie }}</h2>
     <hr class="containerDivider">
 
     <div class="grid">
 
       <div class="balance">
         <p class="currentBalance">Saldo Actual</p>
-        <p class="currentBalanceAmount"><span>$</span>2.000.512</p>
+        <p class="currentBalanceAmount"><span>$</span>{{ withdraw.saldoDisponible | number:'':'es-CL'}}</p>
       </div>
 
       <hr class="grid-divider">
@@ -34,7 +34,7 @@
     <div class="grid">
       <div class="balance">
         <p class="currentBalance">Saldo Actual</p>
-        <p class="currentBalanceAmount"><span>$</span>2.000.512</p>
+        <p class="currentBalanceAmount"><span>$</span>{{ secondGoalAmount | number:'':'es-CL' }}</p>
       </div>
 
       <hr class="grid-divider">
@@ -51,7 +51,7 @@
 
   <section class="totalAmount">
     <p class="totalWithdrawAmount">Monto a retirar</p>
-    <p class="amount"><span>$</span>0</p>
+    <p class="amount"><span>$</span>{{ userAmount | number:'':'es-CL' }}</p>
   </section>
 
   <button class="nextButton">Siguiente</button>
