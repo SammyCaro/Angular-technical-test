@@ -1,0 +1,24 @@
+/* GENERAL STYLES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-family: 'Playfair Display';
+  font-size: 36px;
+  line-height: 42px;
+}
+
+h2 {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+}
+
+button {
+  all: unset;
+}
