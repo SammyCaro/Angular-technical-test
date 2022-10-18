@@ -1,0 +1,20 @@
+{
+"metas": [
+    {
+      "metaId": 393,
+      "metaNombre": "Sólo invertir",
+      "serie": "Serie B",
+      "saldoDisponible": 0,
+      "apv": false,
+      "regimenJubilatorio": null
+    },
+    {
+      "metaId": 419,
+      "metaNombre": "Moderado Conservador",
+      "serie": "Serie B",
+      "saldoDisponible": 2526692,
+      "apv": false,
+      "regimenJubilatorio": null
+    }
+  ]
+}
