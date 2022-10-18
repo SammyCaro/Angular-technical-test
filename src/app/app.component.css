@@ -9,6 +9,7 @@ h1 {
   font-family: 'Playfair Display';
   font-size: 36px;
   line-height: 42px;
+  color: #3D4758;
 }
 
 h2 {
@@ -17,6 +18,7 @@ h2 {
   font-weight: 700;
   font-size: 18px;
   line-height: 23px;
+  color: #3D4758;
 }
 
 button {
