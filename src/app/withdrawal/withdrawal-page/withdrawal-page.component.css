@@ -262,8 +262,8 @@ h2 {
   }
 
   .currentBalanceAmount {
-    font-size: 35px;
-    margin-left: 50px;
+    font-size: 45px;
+    margin-left: 20px;
     margin-top: 9px;
   }
 
@@ -288,6 +288,10 @@ h2 {
   .totalAmount,
   .nextButton {
     width: 30%;
+  }
+
+  .currentBalanceAmount {
+    margin-left: 50px;
   }
 
   .grid {
