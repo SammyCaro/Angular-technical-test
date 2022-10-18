@@ -83,6 +83,12 @@ h2 {
   text-align: center;
 }
 
+.currentBalanceAmount span {
+  font-size: 21px;
+  position: relative;
+  bottom: 5px;
+}
+
 .totalWithdrawAmount,
 .amount {
   color: #59CEC1;
@@ -122,7 +128,6 @@ h2 {
 
 .nextButton {
   width: 100%;
-  /*   padding: 15px 50px; */
   border-radius: 28px;
   background-color: #FE7F6B;
   color: #fff;
@@ -132,3 +137,176 @@ h2 {
 }
 
 /* //buttons */
+
+
+/* MEDIA QUERIES */
+@media (min-width: 768px) {
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  h1 {
+    text-align: left;
+    margin-bottom: 22px;
+  }
+
+  .container {
+    height: 180px;
+    margin-top: 47px;
+    position: relative;
+    padding: 10px;
+  }
+
+  .rectangle {
+    position: absolute;
+    left: 0;
+    height: 170px;
+    width: 12px;
+    background-color: #59CEC1;
+    border-radius: 5px 0px 0px 5px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    text-align: left;
+    margin-left: 29px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .balance {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .currentBalance {
+    align-self: start;
+    margin-left: 29px;
+  }
+
+  .currentBalanceAmount {
+    align-self: center;
+  }
+
+  .grid-divider {
+    display: none;
+  }
+
+  .containerDivider {
+    width: 100%;
+  }
+
+  .currentBalance,
+  .selectOption {
+    text-align: left;
+  }
+
+  .buttonContainer {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .optionsButtons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .buttonContainer {
+    align-self: flex-start;
+  }
+
+  .withdrawAll,
+  .withdrawAmount {
+    width: 130px;
+    font-size: 12px;
+    justify-self: flex-start;
+  }
+
+  .withdrawAll {
+    border-radius: 22px 0px 0px 22px;
+
+  }
+
+  .withdrawAmount {
+    border-radius: 0px 22px 22px 0px;
+  }
+
+  .totalAmount,
+  .nextButton {
+    width: 40%;
+    align-self: end;
+  }
+}
+
+@media (min-width: 1024px) {
+  main {
+    padding: 49px 100px 69px;
+  }
+
+  .subtitle {
+    margin-left: 17px;
+  }
+
+  .currentBalance {
+    margin-left: 17px;
+    font-size: 20px;
+  }
+
+  .selectOption {
+    font-size: 20px;
+    margin-left: 0;
+  }
+
+  .currentBalanceAmount {
+    font-size: 35px;
+    margin-left: 50px;
+    margin-top: 9px;
+  }
+
+  .withdrawAll,
+  .withdrawAmount {
+    width: 140px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+  .nextButton {
+    height: 31px;
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1250px) {
+  main {
+    padding: 49px 220px 69px;
+  }
+
+  .totalAmount,
+  .nextButton {
+    width: 30%;
+  }
+
+  .grid {
+    grid-template-columns: 1fr .2fr 1fr;
+  }
+
+  .grid-divider {
+    width: 1px;
+    height: 90px;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    top: 10px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .currentBalanceAmount {
+    font-size: 55px;
+    margin-left: 10px;
+  }
+}
