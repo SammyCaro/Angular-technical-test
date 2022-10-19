@@ -14,4 +14,11 @@ export class WithdrawalService {
     const url: string = 'http://localhost:3000/metas';
     return this.http.get<Withdraw[]>(url);
   }
+
+  /* get amount from withdraw component */
+  public amount: number = 0;
+  setWithdrawalAmount(amount: number) {
+    this.amount = amount;
+    console.log('servicio: ', this.amount);
+  }
 }

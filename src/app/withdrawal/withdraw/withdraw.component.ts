@@ -42,7 +42,7 @@ export class WithdrawComponent implements OnInit {
 
   withdrawAll() {
     this.userAmount = this.withdrawAmount[0];
-    console.log('monto total', this.userAmount);
+    //console.log('monto total', this.userAmount);
 
     /* detect if user has clicked button from two to two */
     this.count++;
@@ -81,5 +81,9 @@ export class WithdrawComponent implements OnInit {
       this.disableButton = true;
     }
     this.disableButton = false;
+
+    /* send user amount to a service */
+    this.withdrawService.setWithdrawalAmount(this.userAmount);
+    console.log('desde withdraw component', this.userAmount);
   }
 }
