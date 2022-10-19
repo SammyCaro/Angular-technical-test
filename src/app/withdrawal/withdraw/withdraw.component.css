@@ -260,9 +260,13 @@ h2 {
     border-radius: 0px 22px 22px 0px;
   }
 
-  .totalAmount,
-  .nextButton {
+  .totalAmount {
     width: 40%;
+    align-self: end;
+  }
+
+  .nextButton {
+    width: 30%;
     align-self: end;
   }
 
@@ -344,5 +348,9 @@ h2 {
   .currentBalanceAmount {
     font-size: 55px;
     margin-left: 10px;
+  }
+
+  .nextButton {
+    width: 20%;
   }
 }
