@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WithdrawalPageComponent } from './withdrawal-page.component';
+import { SuccessComponent } from './success.component';
 
-describe('WithdrawalPageComponent', () => {
-  let component: WithdrawalPageComponent;
-  let fixture: ComponentFixture<WithdrawalPageComponent>;
+describe('SuccessComponent', () => {
+  let component: SuccessComponent;
+  let fixture: ComponentFixture<SuccessComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WithdrawalPageComponent ]
+      declarations: [ SuccessComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(WithdrawalPageComponent);
+    fixture = TestBed.createComponent(SuccessComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

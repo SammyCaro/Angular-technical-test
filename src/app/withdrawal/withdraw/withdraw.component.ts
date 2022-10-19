@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Withdraw } from '../interfaces/withdrawal.interface';
 import { WithdrawalService } from '../services/withdrawal-service.service';
 
 @Component({
   selector: 'app-withdrawal-page',
-  templateUrl: './withdrawal-page.component.html',
-  styleUrls: ['./withdrawal-page.component.css', '../../app.component.css'],
+  templateUrl: './withdraw.component.html',
+  styleUrls: ['./withdraw.component.css', '../../app.component.css'],
 })
-export class WithdrawalPageComponent implements OnInit {
+export class WithdrawComponent implements OnInit {
   withdrawInfo: Withdraw[] = [];
   withdrawAmount!: number[];
   userAmount: number = 0;
@@ -19,12 +20,15 @@ export class WithdrawalPageComponent implements OnInit {
   /* toggle buttons */
   show: boolean = false;
   /* disable button */
-  disableButton: boolean = true;
+  disableButton: boolean = false;
 
   /* second goal */
   secondGoalAmount: number = 2000512;
 
-  constructor(private withdrawService: WithdrawalService) {}
+  constructor(
+    private withdrawService: WithdrawalService,
+    private _router: Router
+  ) {}
 
   ngOnInit(): void {
     this.withdrawService.getWithdrawals().subscribe((data) => {
@@ -71,12 +75,11 @@ export class WithdrawalPageComponent implements OnInit {
   }
 
   nextPage() {
-    if (this.userAmount === 0) {
+    if (this.userAmount > 0) {
+      this._router.navigateByUrl('/success');
+    } else if (this.userAmount <= 0) {
       this.disableButton = true;
-      console.log(this.disableButton);
-    } else {
-      this.disableButton = false;
-      console.log(this.disableButton);
     }
+    this.disableButton = false;
   }
 }

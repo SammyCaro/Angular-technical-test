@@ -60,6 +60,7 @@
     <p class="amount"><span>$</span>{{ userAmount | number:'':'es-CL' }}</p>
   </section>
 
+  <!-- disable button if disableButton if true -->
   <button class="nextButton" [disabled]="disableButton" (click)="nextPage()">Siguiente</button>
 
 </main>
