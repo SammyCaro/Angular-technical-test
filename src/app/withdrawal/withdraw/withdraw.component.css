@@ -2,7 +2,7 @@ main {
   padding: 49px 20px 69px;
 }
 
-/* spinner */
+/* loading spinner */
 .spinner {
   margin: 0 auto;
 }
@@ -303,7 +303,7 @@ h2 {
   .withdrawAmount {
     width: 140px;
     height: 30px;
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .nextButton {

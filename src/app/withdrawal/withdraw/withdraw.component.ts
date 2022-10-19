@@ -15,22 +15,25 @@ import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 export class WithdrawComponent implements OnInit {
   withdrawInfo: Withdraw[] = [];
   withdrawAmount!: number[];
+
+  /* first goal */
   userAmount: number = 0;
-  userSecondAmount: number = 0;
+  customAmount: number = 0;
+
   /* second goal */
   secondGoalAmount: number = 2000512;
-
-  customAmount: number = 0;
-  customAmount2: number = 0;
+  userSecondAmount: number = 0;
+  customAmountSecondGoal: number = 0;
 
   count: number = 0;
 
-  /* toggle buttons */
+  /* toggle option buttons */
   show: boolean = false;
   showSecondGoal: boolean = false;
   /* disable button */
   disableButton: boolean = false;
 
+  /* Loading spinner */
   loading: boolean = false;
   color: ThemePalette = 'primary';
   mode: ProgressSpinnerMode = 'indeterminate';
@@ -68,6 +71,7 @@ export class WithdrawComponent implements OnInit {
     }
   }
 
+  /* to show custom amount input number */
   showCustomAmountInput() {
     this.show = true;
   }
@@ -75,9 +79,11 @@ export class WithdrawComponent implements OnInit {
   showCustomAmountInput2() {
     this.showSecondGoal = true;
   }
+  /* to show custom amount input number */
 
+  /* gets custom amount inputs value and validate them */
   onKey(event: any) {
-    this.userAmount = this.customAmount + this.customAmount2;
+    this.userAmount = this.customAmount + this.customAmountSecondGoal;
 
     if (
       this.userAmount > this.withdrawAmount[0] &&
@@ -92,19 +98,19 @@ export class WithdrawComponent implements OnInit {
       this.userAmount = 0;
       this.secondGoalAmount = 0;
     }
-
-    console.log('monto personalizado', this.userAmount);
   }
 
+  /* to get back to option buttons */
   backToButtons() {
     this.show = false;
   }
 
-  backToButtons2() {
+  backToButtonsSecondGoal() {
     this.showSecondGoal = false;
   }
+  /* to get back to option buttons */
 
-  nextPage() {
+  toSuccesfullPage() {
     setTimeout(() => {
       if (this.userAmount > 0) {
         this._router.navigateByUrl('/success');
@@ -120,6 +126,5 @@ export class WithdrawComponent implements OnInit {
     }, 3000);
 
     this.loading = true;
-    console.log(this.loading);
   }
 }

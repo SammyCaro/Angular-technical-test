@@ -2,10 +2,14 @@
   <h1>Hacer un retiro</h1>
   <hr class="titleHr">
 
+  <!-- FIRST GOAL CONTAINER -->
   <section class="container">
     <span class="rectangle"></span>
-    <h2 class="subtitle"> {{ withdraw.metaNombre }} - {{ withdraw.serie }}</h2>
-    <hr class="containerDivider">
+
+    <header>
+      <h2 class="subtitle"> {{ withdraw.metaNombre }} - {{ withdraw.serie }}</h2>
+      <hr class="containerDivider">
+    </header>
 
     <div class="grid">
 
@@ -36,10 +40,14 @@
     </div>
   </section>
 
+  <!-- SECOND GOAL CONTAINER -->
   <section class="container">
     <span class="rectangle"></span>
-    <h2 class="subtitle"> Moderado Arriesgado - Serie C</h2>
-    <hr class="containerDivider">
+
+    <header>
+      <h2 class="subtitle"> Moderado Arriesgado - Serie C</h2>
+      <hr class="containerDivider">
+    </header>
 
     <div class="grid">
       <div class="balance">
@@ -58,24 +66,24 @@
 
         <ng-template #showInputText2>
           <div class="customAmountContainer">
-            <button (click)="backToButtons2()">
+            <button (click)="backToButtonsSecondGoal()">
               <mat-icon class="arrowIcon">arrow_back</mat-icon>
             </button>
-            <input type="number" class="customAmount" [max]="withdraw.saldoDisponible" [(ngModel)]="customAmount2"
-              (keyup)="onKey($event)">
+            <input type="number" class="customAmount" [max]="withdraw.saldoDisponible"
+              [(ngModel)]="customAmountSecondGoal" (keyup)="onKey($event)">
           </div>
         </ng-template>
       </div>
     </div>
   </section>
 
+  <!-- TOTAL WITHDRAW AMOUNT -->
   <section class="totalAmount" *ngIf="loading === false; else waiting">
     <p class="totalWithdrawAmount">Monto a retirar</p>
     <p class="amount"><span>$</span>{{ userAmount + userSecondAmount | number:'':'es-CL' }}</p>
   </section>
 
-  <button class="nextButton" [disabled]="disableButton" (click)="nextPage()">Siguiente</button>
-
+  <button class="nextButton" [disabled]="disableButton" (click)="toSuccesfullPage()">Siguiente</button>
 </main>
 
 <ng-template #waiting>
