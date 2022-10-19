@@ -14,11 +14,15 @@ export class WithdrawalPageComponent implements OnInit {
   userAmount: number = 0;
   customAmount: number = 0;
 
-  /* second goal */
-  secondGoalAmount: number = 2000512;
+  count: number = 0;
 
   /* toggle buttons */
   show: boolean = false;
+  /* disable button */
+  disableButton: boolean = true;
+
+  /* second goal */
+  secondGoalAmount: number = 2000512;
 
   constructor(private withdrawService: WithdrawalService) {}
 
@@ -35,6 +39,12 @@ export class WithdrawalPageComponent implements OnInit {
   withdrawAll() {
     this.userAmount = this.withdrawAmount[0];
     console.log('monto total', this.userAmount);
+
+    /* detect if user has clicked button from two to two */
+    this.count++;
+    if (this.count % 2 === 0) {
+      this.userAmount = 0;
+    }
   }
 
   showCustomAmountInput() {
@@ -44,13 +54,12 @@ export class WithdrawalPageComponent implements OnInit {
 
   onKey(event: any) {
     this.userAmount = this.customAmount;
+
     if (this.userAmount > this.withdrawAmount[0]) {
       this.userAmount = this.withdrawAmount[0];
     } else if (this.userAmount < 0) {
       this.userAmount = 0;
-    }
-
-    if (event.target.value === '') {
+    } else if (event.target.value === '' || event.target.value === '0') {
       this.userAmount = 0;
     }
 
@@ -59,5 +68,15 @@ export class WithdrawalPageComponent implements OnInit {
 
   backToButtons() {
     this.show = false;
+  }
+
+  nextPage() {
+    if (this.userAmount === 0) {
+      this.disableButton = true;
+      console.log(this.disableButton);
+    } else {
+      this.disableButton = false;
+      console.log(this.disableButton);
+    }
   }
 }
