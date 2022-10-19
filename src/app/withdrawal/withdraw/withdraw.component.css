@@ -2,6 +2,11 @@ main {
   padding: 49px 20px 69px;
 }
 
+/* spinner */
+.spinner {
+  margin-left: 80%;
+}
+
 /* dividers */
 hr {
   border: 1px solid #E6ECF5;

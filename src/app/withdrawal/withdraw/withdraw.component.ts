@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { Withdraw } from '../interfaces/withdrawal.interface';
 import { WithdrawalService } from '../services/withdrawal-service.service';
 
+import { ThemePalette } from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+
 @Component({
   selector: 'app-withdrawal-page',
   templateUrl: './withdraw.component.html',
@@ -29,6 +32,9 @@ export class WithdrawComponent implements OnInit {
   disableButton: boolean = false;
 
   loading: boolean = false;
+  color: ThemePalette = 'primary';
+  mode: ProgressSpinnerMode = 'indeterminate';
+  value = 50;
 
   constructor(
     private withdrawService: WithdrawalService,
@@ -111,10 +117,9 @@ export class WithdrawComponent implements OnInit {
       this.withdrawService.setWithdrawalAmount(
         this.userAmount + this.userSecondAmount
       );
-
-      this.loading = true;
     }, 3000);
 
-    this.loading = false;
+    this.loading = true;
+    console.log(this.loading);
   }
 }

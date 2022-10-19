@@ -61,19 +61,16 @@
     </div>
   </section>
 
-  <section class="totalAmount">
+  <section class="totalAmount" *ngIf="loading === false; else waiting">
     <p class="totalWithdrawAmount">Monto a retirar</p>
     <p class="amount"><span>$</span>{{ userAmount + userSecondAmount | number:'':'es-CL' }}</p>
   </section>
 
-  <!-- disable button if disableButton if true -->
-  <div *ngIf="!loading; else loading">
-    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
-  </div>
-
-  <ng-template #loading>
-    <button class="nextButton" [disabled]="disableButton" (click)="nextPage()">Siguiente</button>
-  </ng-template>
-
+  <button class="nextButton" [disabled]="disableButton" (click)="nextPage()">Siguiente</button>
 
 </main>
+
+<ng-template #waiting>
+  <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value">
+  </mat-progress-spinner>
+</ng-template>
