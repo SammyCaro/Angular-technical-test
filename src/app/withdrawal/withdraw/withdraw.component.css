@@ -4,7 +4,7 @@ main {
 
 /* spinner */
 .spinner {
-  margin-left: 80%;
+  margin: 0 auto;
 }
 
 /* dividers */
@@ -61,6 +61,15 @@ h2 {
 
 .submitButtonContainer {
   width: 100%;
+}
+
+.customAmountContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.arrowIcon {
+  margin-left: 90%;
 }
 
 /* //containers */
@@ -142,6 +151,17 @@ h2 {
 }
 
 /* //buttons */
+
+/* input number */
+.customAmount {
+  all: unset;
+  width: 90%;
+  height: 42px;
+  background: #FFFFFF;
+  border: 1px solid #E6ECF5;
+  border-radius: 3px;
+  margin: 0 auto;
+}
 
 
 /* MEDIA QUERIES */
@@ -227,7 +247,7 @@ h2 {
   .withdrawAll,
   .withdrawAmount {
     width: 130px;
-    font-size: 12px;
+    font-size: 11px;
     justify-self: flex-start;
   }
 
@@ -244,6 +264,13 @@ h2 {
   .nextButton {
     width: 40%;
     align-self: end;
+  }
+
+  .customAmount,
+  .arrowIcon
+  {
+    position: relative;
+    bottom: 25px;
   }
 }
 

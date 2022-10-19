@@ -24,9 +24,13 @@
         </div>
 
         <ng-template #showInputText>
-          <input type="number" [max]="withdraw.saldoDisponible" [(ngModel)]="customAmount" (keyup)="onKey($event)">
-          <button (click)="backToButtons()">
-            <- </button>
+          <div class="customAmountContainer">
+            <button (click)="backToButtons()">
+              <mat-icon class="arrowIcon">arrow_back</mat-icon>
+            </button>
+            <input type="number" class="customAmount" [max]="withdraw.saldoDisponible" [(ngModel)]="customAmount"
+              (keyup)="onKey($event)">
+          </div>
         </ng-template>
       </div>
     </div>
@@ -53,9 +57,13 @@
         </div>
 
         <ng-template #showInputText2>
-          <input type="number" [max]="withdraw.saldoDisponible" [(ngModel)]="customAmount2" (keyup)="onKey($event)">
-          <button (click)="backToButtons2()">
-            <- </button>
+          <div class="customAmountContainer">
+            <button (click)="backToButtons2()">
+              <mat-icon class="arrowIcon">arrow_back</mat-icon>
+            </button>
+            <input type="number" class="customAmount" [max]="withdraw.saldoDisponible" [(ngModel)]="customAmount2"
+              (keyup)="onKey($event)">
+          </div>
         </ng-template>
       </div>
     </div>

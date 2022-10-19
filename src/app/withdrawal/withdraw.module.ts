@@ -7,9 +7,16 @@ import { SuccessComponent } from './success/success.component';
 import { RouterModule } from '@angular/router';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [WithdrawComponent, SuccessComponent],
-  imports: [CommonModule, FormsModule, RouterModule, MatProgressSpinnerModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+  ],
   exports: [WithdrawComponent, SuccessComponent],
 })
 export class WithdrawalModule {}
