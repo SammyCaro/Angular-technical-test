@@ -17,8 +17,12 @@ export class WithdrawalService {
 
   /* get amount from withdraw component */
   public amount: number = 0;
+  public secondAmount: number = 0;
+  public result: number = 0;
+
   setWithdrawalAmount(amount: number) {
     this.amount = amount;
-    console.log('servicio: ', this.amount);
+    this.result = this.secondAmount + this.amount;
+    return this.result;
   }
 }

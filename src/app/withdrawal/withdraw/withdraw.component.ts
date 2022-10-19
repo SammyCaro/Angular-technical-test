@@ -13,17 +13,22 @@ export class WithdrawComponent implements OnInit {
   withdrawInfo: Withdraw[] = [];
   withdrawAmount!: number[];
   userAmount: number = 0;
+  userSecondAmount: number = 0;
+  /* second goal */
+  secondGoalAmount: number = 2000512;
+
   customAmount: number = 0;
+  customAmount2: number = 0;
 
   count: number = 0;
 
   /* toggle buttons */
   show: boolean = false;
+  showSecondGoal: boolean = false;
   /* disable button */
   disableButton: boolean = false;
 
-  /* second goal */
-  secondGoalAmount: number = 2000512;
+  loading: boolean = false;
 
   constructor(
     private withdrawService: WithdrawalService,
@@ -42,29 +47,44 @@ export class WithdrawComponent implements OnInit {
 
   withdrawAll() {
     this.userAmount = this.withdrawAmount[0];
-    //console.log('monto total', this.userAmount);
 
-    /* detect if user has clicked button from two to two */
     this.count++;
     if (this.count % 2 === 0) {
       this.userAmount = 0;
     }
   }
 
+  withdrawSecondGoal() {
+    this.userSecondAmount = this.secondGoalAmount;
+    this.count++;
+    if (this.count % 2 === 0) {
+      this.userSecondAmount = 0;
+    }
+  }
+
   showCustomAmountInput() {
     this.show = true;
-    console.log(this.show);
+  }
+
+  showCustomAmountInput2() {
+    this.showSecondGoal = true;
   }
 
   onKey(event: any) {
-    this.userAmount = this.customAmount;
+    this.userAmount = this.customAmount + this.customAmount2;
 
-    if (this.userAmount > this.withdrawAmount[0]) {
+    if (
+      this.userAmount > this.withdrawAmount[0] &&
+      this.userSecondAmount > this.secondGoalAmount
+    ) {
       this.userAmount = this.withdrawAmount[0];
-    } else if (this.userAmount < 0) {
+      this.userSecondAmount = this.secondGoalAmount;
+    } else if (this.userAmount < 0 && this.userSecondAmount < 0) {
       this.userAmount = 0;
-    } else if (event.target.value === '' || event.target.value === '0') {
+      this.secondGoalAmount = 0;
+    } else if (event.target.value === '' && event.target.value === '0') {
       this.userAmount = 0;
+      this.secondGoalAmount = 0;
     }
 
     console.log('monto personalizado', this.userAmount);
@@ -74,16 +94,27 @@ export class WithdrawComponent implements OnInit {
     this.show = false;
   }
 
-  nextPage() {
-    if (this.userAmount > 0) {
-      this._router.navigateByUrl('/success');
-    } else if (this.userAmount <= 0) {
-      this.disableButton = true;
-    }
-    this.disableButton = false;
+  backToButtons2() {
+    this.showSecondGoal = false;
+  }
 
-    /* send user amount to a service */
-    this.withdrawService.setWithdrawalAmount(this.userAmount);
-    console.log('desde withdraw component', this.userAmount);
+  nextPage() {
+    setTimeout(() => {
+      if (this.userAmount > 0) {
+        this._router.navigateByUrl('/success');
+      } else if (this.userAmount <= 0) {
+        this.disableButton = true;
+      }
+      this.disableButton = false;
+
+      /* send user amount to a service */
+      this.withdrawService.setWithdrawalAmount(
+        this.userAmount + this.userSecondAmount
+      );
+
+      this.loading = true;
+    }, 3000);
+
+    this.loading = false;
   }
 }

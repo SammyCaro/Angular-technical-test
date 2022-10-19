@@ -47,20 +47,33 @@
 
       <div class="optionsButtons">
         <p class="selectOption">Seleccione una opción</p>
-        <div class="buttonContainer">
-          <button class="withdrawAll" (click)="withdrawAll()">Quiero retirar todo</button>
-          <button class="withdrawAmount">Quiero ingresar el monto</button>
+        <div class="buttonContainer" *ngIf="showSecondGoal === false; else showInputText2">
+          <button class="withdrawAll" (click)="withdrawSecondGoal()">Quiero retirar todo</button>
+          <button class="withdrawAmount" (click)="showCustomAmountInput2()">Quiero ingresar el monto</button>
         </div>
+
+        <ng-template #showInputText2>
+          <input type="number" [max]="withdraw.saldoDisponible" [(ngModel)]="customAmount2" (keyup)="onKey($event)">
+          <button (click)="backToButtons2()">
+            <- </button>
+        </ng-template>
       </div>
     </div>
   </section>
 
   <section class="totalAmount">
     <p class="totalWithdrawAmount">Monto a retirar</p>
-    <p class="amount"><span>$</span>{{ userAmount | number:'':'es-CL' }}</p>
+    <p class="amount"><span>$</span>{{ userAmount + userSecondAmount | number:'':'es-CL' }}</p>
   </section>
 
   <!-- disable button if disableButton if true -->
-  <button class="nextButton" [disabled]="disableButton" (click)="nextPage()">Siguiente</button>
+  <div *ngIf="!loading; else loading">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+
+  <ng-template #loading>
+    <button class="nextButton" [disabled]="disableButton" (click)="nextPage()">Siguiente</button>
+  </ng-template>
+
 
 </main>

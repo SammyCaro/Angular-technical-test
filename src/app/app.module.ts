@@ -11,6 +11,8 @@ import localEsCl from '@angular/common/locales/es-CL';
 
 import { AppComponent } from './app.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 registerLocaleData(localEsCl);
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +22,7 @@ registerLocaleData(localEsCl);
 
     AppRoutingModule,
     WithdrawalModule,
+    BrowserAnimationsModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-CL' }],
   bootstrap: [AppComponent],
